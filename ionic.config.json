@@ -1,0 +1,7 @@
+{
+  "name": "LayananPublik",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

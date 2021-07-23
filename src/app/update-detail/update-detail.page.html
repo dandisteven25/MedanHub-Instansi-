@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/detail"></ion-icon>
+    <ion-title>Update Detail Laporan</ion-title>
+    <ion-label (click)="update_laporan()" slot="end">Simpan</ion-label>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card-content>
+      <div class="header">
+        <img src="assets/person.png" alt="Gambar User">
+        <div class="header-tengah">
+          <h5>{{user?.username}}</h5>
+          <p>{{user?.kecamatan}}</p>
+        </div>
+      </div>
+
+      <div class="img-conteiner">
+        <ion-img src="assets/jalan-rusak.jpg"></ion-img>
+      </div>
+      <div class="image-caption">
+        <ion-label>{{user?.status}}</ion-label>
+      </div>
+
+      <div class="kat-des">
+        <p class="kategori">Kategori : <b>Jalan Rusak</b></p>
+        <p class="deskripsi">{{user?.deskripsi}}</p>
+        <p style="font-size: 10px;">{{user?.tanggal | date:'fullDate'}}</p>
+      </div>
+    </ion-card-content>
+
+    <div class="select-laporan">
+      <ion-item>
+        <ion-label>Status Laporan</ion-label>
+        <ion-select placeholder="Pilih Status" [(ngModel)]="selected_option">
+          <ion-select-option value="Menunggu Penanganan">Menunggu Penanganan</ion-select-option>
+          <ion-select-option value="Sedang Ditangani">Sedang Ditangani</ion-select-option>
+          <ion-select-option value="Selesai">Selesai</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+</ion-content>

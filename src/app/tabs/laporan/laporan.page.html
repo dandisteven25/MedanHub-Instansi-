@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="assets/logo2.png">
+  </ion-toolbar>
+</ion-header>
+
+<div class="conteiner">
+  <div class="content-conteiner ion-padding">
+      <ion-label>LAYANAN PUBLIK</ion-label>
+      <h1>{{instansi?.fullname}}</h1>
+      <p>{{instansi?.username}}</p>
+  </div>
+</div>
+
+<ion-content>
+  <h4>Laporan</h4>
+
+  <ion-list class="ion-no-border">
+    <ion-item routerLink="/menunggu">
+      <ion-label>Menunggu Penanganan</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/sedang-ditangani">
+      <ion-label>Sedang Ditangani</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/selesai">
+      <ion-label>Selesai</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

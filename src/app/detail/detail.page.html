@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/notifikasi"></ion-icon>
+    <ion-title>Detail Laporan</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card-content>
+      <div class="header">
+        <img src="assets/person.png" alt="Gambar User">
+        <div class="header-tengah">
+          <h5>{{user?.username}}</h5>
+          <p>{{user?.kecamatan}}</p>
+        </div>
+      </div>
+
+      <div class="img-conteiner">
+        <ion-img src="assets/jalan-rusak.jpg"></ion-img>
+      </div>
+      <div class="image-caption">
+        <ion-label>{{user?.status}}</ion-label>
+      </div>
+
+      <div class="kat-des">
+        <p class="kategori">Kategori : <b>Jalan Rusak</b></p>
+        <p class="deskripsi">{{user?.deskripsi}}</p>
+        <p style="font-size: 10px;">{{user?.tanggal | date:'fullDate'}}</p>
+      </div>
+    </ion-card-content>
+
+    <div class="fab">
+      <ion-fab edge slot="fixed" horizontal="end">
+        <ion-fab-button routerLink="/update-detail">
+          <ion-icon name="pencil-sharp"></ion-icon>
+          <p>Update</p>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+</ion-content>
