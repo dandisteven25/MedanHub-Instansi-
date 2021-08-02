@@ -1,10 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/laporan"></ion-icon>
-    <ion-title>Sedang Ditangani</ion-title>
+    <ion-title>Menunggu Penanganan</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <h4>Daftar Laporan</h4>
+  <ng-container *ngFor="let item of user" class="conteiner">
+    <ion-item (click)="gotoDetail(item['id'])">
+      <img src="assets/person.png">
+      <ion-label>{{item?.data?.deskripsi}}</ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>

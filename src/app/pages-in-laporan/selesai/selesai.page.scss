@@ -1,22 +1,46 @@
-ion-toolbar{
-  --background:white;
+ion-toolbar {
+  --background: white;
   padding-bottom: 0;
   margin-bottom: 0;
   color: black;
 
-  ion-icon{
+  ion-icon {
     margin-left: 15px;
     margin-right: 0;
     width: 20px;
     height: 20px;
   }
 
-  ion-title{
+  ion-title {
     margin-left: 10px;
     padding-left: 0;
   }
 }
-ion-header{
+ion-header {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+ion-content {
+  --background: white;
+
+  h4 {
+    padding-left: 15px;
+    color: black;
+    font-weight: bold;
+  }
+  ion-item {
+    --background: white;
+    padding-right: 15px;
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+    ion-label {
+      color: black;
+      margin-left: 15px;
+    }
+  }
 }
