@@ -41,6 +41,7 @@ export class SedangDitanganiPage implements OnInit {
                 ref
                   .where('nama_layanan', '==', this.akun.fullname)
                   .where('status', '==', 'Sedang Ditangani')
+                  .orderBy('tanggal', 'desc')
               )
               .snapshotChanges()
               .subscribe((data) => {

@@ -48,6 +48,7 @@ export class SelesaiPage implements OnInit {
                 ref
                   .where('nama_layanan', '==', this.akun.fullname)
                   .where('status', '==', 'Selesai')
+                  .orderBy('tanggal', 'desc')
               )
               .snapshotChanges()
               .subscribe((data) => {

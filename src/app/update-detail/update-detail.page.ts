@@ -13,10 +13,9 @@ import { NavController, AlertController } from '@ionic/angular';
   styleUrls: ['./update-detail.page.scss'],
 })
 export class UpdateDetailPage implements OnInit {
-
-  user
-  status: string="";
-  selected_option: string="";
+  user;
+  status: string = '';
+  selected_option: string = '';
 
   constructor(
     private dbService: DatabaseService,
@@ -24,30 +23,28 @@ export class UpdateDetailPage implements OnInit {
     private dataService: DataserviceService,
     private alert: AlertController,
     private navCtrl: NavController
-    )
-    { }
+  ) {}
 
   ngOnInit() {
-    let idLaporan = this.dbService.laporanId
-    this.dbService.getDetailLaporan(idLaporan).subscribe(data=>{
-      console.log(data)
-      this.user=data
+    let idLaporan = this.dbService.laporanId;
+    this.dbService.getDetailLaporan(idLaporan).subscribe((data) => {
+      console.log(data);
+      this.user = data;
     });
   }
 
-  update_laporan(){
-    this.status = this.selected_option
-    let id_laporan = this.dbService.laporanId
-    this.dbService.update_laporan(id_laporan, {"status": this.status})
-    this.showAlert("Berhasil Update Status...")
-    this.navCtrl.navigateRoot("/detail")
+  update_laporan() {
+    this.status = this.selected_option;
+    let id_laporan = this.dbService.laporanId;
+    this.dbService.update_laporan(id_laporan, { status: this.status });
+    this.showAlert('Berhasil Update Status...');
+    this.navCtrl.navigateRoot('/detail');
   }
 
-  async showAlert(message:string){
+  async showAlert(message: string) {
     const alert = await this.alert.create({
-      message
+      message,
     });
-    await alert.present()
+    await alert.present();
   }
-
 }
