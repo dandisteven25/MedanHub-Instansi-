@@ -76,7 +76,7 @@ export class SedangDitanganiPage implements OnInit {
 
   gotoDetail(idLaporan) {
     this.dbService.laporanId = idLaporan;
-    this.navCtrl.navigateForward('/detail');
+    this.navCtrl.navigateForward('/detail-sedang');
   }
 
   doRefresh(event) {

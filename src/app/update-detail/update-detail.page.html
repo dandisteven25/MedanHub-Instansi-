@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="arrow-back-outline" routerLink="/detail"></ion-icon>
+    <ion-icon slot="start" name="arrow-back-outline" routerLink="/home/laporan"></ion-icon>
     <ion-title>Update Detail Laporan</ion-title>
     <ion-label (click)="update_laporan()" slot="end">Simpan</ion-label>
   </ion-toolbar>
@@ -8,7 +8,7 @@
 <ion-content>
   <ion-card-content>
     <div class="header">
-      <img src="assets/person.png" alt="Gambar User">
+      <img [src]="user?.fotoUser" alt="Gambar User">
       <div class="header-tengah">
         <h5>{{user?.username}}</h5>
         <p>{{user?.kecamatan}}</p>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="img-conteiner">
-      <ion-img src="assets/jalan-rusak.jpg"></ion-img>
+      <ion-img [src]="user?.photo"></ion-img>
     </div>
     <div class="image-caption">
       <ion-label>{{user?.status}}</ion-label>

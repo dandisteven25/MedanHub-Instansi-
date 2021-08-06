@@ -83,7 +83,7 @@ export class SelesaiPage implements OnInit {
 
   gotoDetail(idLaporan) {
     this.dbService.laporanId = idLaporan;
-    this.navCtrl.navigateForward('/detail');
+    this.navCtrl.navigateForward('/detail-selesai');
   }
 
   doRefresh(event) {

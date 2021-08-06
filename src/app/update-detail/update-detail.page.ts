@@ -38,7 +38,7 @@ export class UpdateDetailPage implements OnInit {
     let id_laporan = this.dbService.laporanId;
     this.dbService.update_laporan(id_laporan, { status: this.status });
     this.showAlert('Berhasil Update Status...');
-    this.navCtrl.navigateRoot('/detail');
+    this.navCtrl.navigateRoot('/home/laporan');
   }
 
   async showAlert(message: string) {

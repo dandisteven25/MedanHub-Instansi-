@@ -47,6 +47,18 @@ const routes: Routes = [
     path: 'update-detail',
     loadChildren: () => import('./update-detail/update-detail.module').then( m => m.UpdateDetailPageModule)
   },
+  {
+    path: 'detail-menunggu',
+    loadChildren: () => import('./detail-menunggu/detail-menunggu.module').then( m => m.DetailMenungguPageModule)
+  },
+  {
+    path: 'detail-sedang',
+    loadChildren: () => import('./detail-sedang/detail-sedang.module').then( m => m.DetailSedangPageModule)
+  },
+  {
+    path: 'detail-selesai',
+    loadChildren: () => import('./detail-selesai/detail-selesai.module').then( m => m.DetailSelesaiPageModule)
+  },
 ];
 
 @NgModule({
