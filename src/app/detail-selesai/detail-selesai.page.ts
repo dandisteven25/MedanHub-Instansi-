@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import '@firebase/auth';
 
+
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.page.html',
-  styleUrls: ['./detail.page.scss'],
+  selector: 'app-detail-selesai',
+  templateUrl: './detail-selesai.page.html',
+  styleUrls: ['./detail-selesai.page.scss'],
 })
-export class DetailPage implements OnInit {
+export class DetailSelesaiPage implements OnInit {
 
   user
 
@@ -24,5 +25,6 @@ export class DetailPage implements OnInit {
     })
 
   }
+
 
 }

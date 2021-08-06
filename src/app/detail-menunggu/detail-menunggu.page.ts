@@ -3,14 +3,12 @@ import { DatabaseService } from '../services/database.service';
 import '@firebase/auth';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.page.html',
-  styleUrls: ['./detail.page.scss'],
+  selector: 'app-detail-menunggu',
+  templateUrl: './detail-menunggu.page.html',
+  styleUrls: ['./detail-menunggu.page.scss'],
 })
-export class DetailPage implements OnInit {
-
+export class DetailMenungguPage implements OnInit {
   user
-
 
   constructor(
     private dbService: DatabaseService)

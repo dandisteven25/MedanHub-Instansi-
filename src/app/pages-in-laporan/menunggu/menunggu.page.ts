@@ -76,7 +76,7 @@ export class MenungguPage implements OnInit {
 
   gotoDetail(idLaporan) {
     this.dbService.laporanId = idLaporan;
-    this.navCtrl.navigateForward('/detail');
+    this.navCtrl.navigateForward('/detail-menunggu');
   }
 
   doRefresh(event) {
