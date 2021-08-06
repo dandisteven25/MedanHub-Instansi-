@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import firebase from '@firebase/app';
 import '@firebase/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-edit-profil',
@@ -18,7 +19,13 @@ export class EditProfilPage implements OnInit {
 
   instansi
 
-  constructor(private camera: Camera, private dbService: DatabaseService, private authService: AuthService, private navCtrl: NavController) { }
+  constructor(
+    private camera: Camera,
+    private dbService: DatabaseService,
+    private authService: AuthService,
+    private navCtrl: NavController,
+    private afStorage: AngularFireStorage
+    ) { }
 
   ngOnInit() {
     console.log(this.authService.userData)
@@ -53,8 +60,12 @@ export class EditProfilPage implements OnInit {
      });
   }
 
-  update_instansi(){
-    this.dbService.update_instansi(this.authService.userData.uid, {"fullname":this.fullname,"username":this.username})
+  async update_instansi(){
+    const ref=this.afStorage.ref(`/images/${Date.now()}.jpeg`)
+    await ref.putString(this.photo.substr(23),'base64',{ contentType: 'image/jpeg' })
+    const photoInstansi=await ref.getDownloadURL().toPromise()
+
+    this.dbService.update_instansi(this.authService.userData.uid, {"fullname":this.fullname,"username":this.username, "fotoProfilInstansi":photoInstansi})
     this.navCtrl.navigateRoot("/home/profil")
   }
 

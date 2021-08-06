@@ -11,7 +11,7 @@
   <h4>Daftar Laporan</h4>
   <ng-container *ngFor="let item of user" class="conteiner">
     <ion-item (click)="gotoDetail(item['id'])">
-      <img src="assets/person.png">
+      <img [src]="item?.data?.fotoUser">
       <ion-label>{{item?.data?.deskripsi}}</ion-label>
     </ion-item>
   </ng-container>
