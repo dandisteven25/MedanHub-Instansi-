@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'detail-selesai',
     loadChildren: () => import('./detail-selesai/detail-selesai.module').then( m => m.DetailSelesaiPageModule)
   },
+  {
+    path: 'daftar',
+    loadChildren: () => import('./daftar/daftar.module').then( m => m.DaftarPageModule)
+  },
 ];
 
 @NgModule({
