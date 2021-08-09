@@ -10,7 +10,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class LaporanPage implements OnInit {
 
-  instansi
+  layanan_publik
 
   constructor(private dbService: DatabaseService, private authService: AuthService) { }
 
@@ -19,8 +19,8 @@ export class LaporanPage implements OnInit {
     try{
       this.authService.checkAuthState().subscribe(data=>{
         this.dbService.getInstansi(data.uid).subscribe((data)=>{
-          this.instansi = data.payload.data()
-          console.log(this.instansi)
+          this.layanan_publik = data.payload.data()
+          console.log(this.layanan_publik)
         })
       })
     }catch(e){console.log(e)}

@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from '../services/database.service';
-import firebase from '@firebase/app';
 import '@firebase/auth';
-import { DataserviceService } from 'src/app/services/dataservice.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
@@ -19,8 +15,6 @@ export class UpdateDetailPage implements OnInit {
 
   constructor(
     private dbService: DatabaseService,
-    private authService: AuthService,
-    private dataService: DataserviceService,
     private alert: AlertController,
     private navCtrl: NavController
   ) {}

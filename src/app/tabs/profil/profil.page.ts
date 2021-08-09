@@ -12,7 +12,7 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class ProfilPage implements OnInit {
 
-  instansi
+  layanan_publik
 
   constructor(private dbService: DatabaseService,
     private authService: AuthService,
@@ -25,8 +25,8 @@ export class ProfilPage implements OnInit {
     try{
       this.authService.checkAuthState().subscribe(data=>{
         this.dbService.getInstansi(data.uid).subscribe((data)=>{
-          this.instansi = data.payload.data()
-          console.log(this.instansi)
+          this.layanan_publik = data.payload.data()
+          console.log(this.layanan_publik)
         })
       })
     }catch(e){console.log(e)}

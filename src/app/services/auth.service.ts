@@ -16,15 +16,15 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.ngFireAuth.authState.subscribe(instansi => {
-      if (instansi) {
-        this.userData = instansi;
+    this.ngFireAuth.authState.subscribe(layanan_publik => {
+      if (layanan_publik) {
+        this.userData = layanan_publik;
         console.log(this.userData);
-        localStorage.setItem('instansi', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('instansi'));
+        localStorage.setItem('layanan_publik', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('layanan_publik'));
       } else {
-        localStorage.setItem('instansi', null);
-        JSON.parse(localStorage.getItem('instansi'));
+        localStorage.setItem('layanan_publik', null);
+        JSON.parse(localStorage.getItem('layanan_publik'));
       }
     });
   }
@@ -45,14 +45,14 @@ export class AuthService {
 
   // Returns true when user is looged in
   get isLoggedIn(): boolean {
-    const instansi = JSON.parse(localStorage.getItem('instansi'));
-    return (instansi !== null) ? true : false;
+    const layanan_publik = JSON.parse(localStorage.getItem('layanan_publik'));
+    return (layanan_publik !== null) ? true : false;
   }
 
   // Sign-out
   SignOut() {
     return this.ngFireAuth.signOut().then(() => {
-      localStorage.removeItem('instansi');
+      localStorage.removeItem('layanan_publik');
       this.router.navigate(['/login']);
     });
   }

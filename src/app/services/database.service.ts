@@ -52,7 +52,7 @@ export class DatabaseService {
   getLaporan(id) {
     this.loadingService.presentLoading();
     return this.firestore
-      .collection('laporan', (ref) => ref.where('userId', '==', id))
+      .collection('laporan', (ref) => ref.where('id_user', '==', id))
       .snapshotChanges();
   }
 
