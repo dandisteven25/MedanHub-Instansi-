@@ -18,7 +18,8 @@ export class DaftarPage implements OnInit {
   password: string= "";
   username:string= "";
   contactnumber:string= "";
-  fullname:string="";
+  nama_layanan:string="";
+  id_layanan: string="";
 
 
   constructor(private dataService: DataserviceService, public alert:AlertController, public router:Router, private databaseService: DatabaseService) { }
@@ -32,7 +33,8 @@ export class DaftarPage implements OnInit {
       async (data)=>{
         this.showAlert("Berhasil Daftar, Silahkan Login");
         console.log("Berhasil Daftar")
-        await this.databaseService.setInstansi(data.user.uid,{"username": this.username, "fullname": this.fullname, "contactnumber":this.contactnumber,"email":this.email, "password":this.password})
+        this.id_layanan = data.user.uid;
+        await this.databaseService.setInstansi(data.user.uid,{"username": this.username, "nama_layanan": this.nama_layanan, "contactnumber":this.contactnumber,"email":this.email, "id_layanan":this.id_layanan})
         this.router.navigate(["/login"])
 
       }).catch((err)=> {
