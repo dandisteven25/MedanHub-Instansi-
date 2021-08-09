@@ -1,28 +1,28 @@
-ion-toolbar{
-  --background:white;
+ion-toolbar {
+  --background: white;
   color: black;
   text-align: center;
 }
 
-ion-content{
-  --background:white;
+ion-content {
+  --background: white;
 
-
-  h4{
+  h4 {
     padding-left: 15px;
     color: black;
     font-weight: bold;
   }
-  ion-item{
+  ion-item {
     --background: white;
     padding-right: 15px;
 
-    img{
-      width: 70px;
-      height: 70px;
+    img {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
+      margin-bottom: 10px;
     }
-    ion-label{
+    ion-label {
       color: black;
       margin-left: 15px;
     }
