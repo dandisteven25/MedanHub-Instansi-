@@ -8,13 +8,14 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./welcome.page.scss'],
 })
 export class WelcomePage implements OnInit {
-
-  constructor(private authService: AuthService, private navCtrl: NavController) { }
+  constructor(
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {}
 
   ngOnInit() {
-    if(this.authService.isLoggedIn){
-      this.navCtrl.navigateRoot("/home/laporan")
+    if (this.authService.isLoggedIn) {
+      this.navCtrl.navigateRoot('/home/laporan');
     }
   }
-
 }

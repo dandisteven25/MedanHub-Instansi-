@@ -30,7 +30,9 @@ export class SedangDitanganiPage implements OnInit {
     this.authService.checkAuthState().subscribe((user) => {
       //console.log(user.email);
       this.firestore
-        .collection('instansi', (ref) => ref.where('email', '==', user.email))
+        .collection('layanan_publik', (ref) =>
+          ref.where('email', '==', user.email)
+        )
         .snapshotChanges()
         .subscribe((data) => {
           this.akun = data.map((item) => {

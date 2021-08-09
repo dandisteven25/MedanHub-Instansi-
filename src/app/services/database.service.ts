@@ -3,17 +3,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingService } from './loading.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DatabaseService {
-
-  collectionName = 'instansi';
-  laporanId=""
+  collectionName = 'layanan_publik';
+  laporanId = '';
 
   constructor(
     private loadingService: LoadingService,
     private firestore: AngularFirestore
-  ) { }
+  ) {}
 
   create_instansi(record) {
     this.loadingService.presentLoading();
@@ -24,37 +23,42 @@ export class DatabaseService {
     return this.firestore.collection(this.collectionName).snapshotChanges();
   }
 
-  setInstansi(id,user){
+  setInstansi(id, user) {
     return this.firestore.collection(this.collectionName).doc(id).set(user);
   }
 
-  getInstansi(id){
+  getInstansi(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection(this.collectionName).doc(id).snapshotChanges();
+    return this.firestore
+      .collection(this.collectionName)
+      .doc(id)
+      .snapshotChanges();
   }
 
-  getUser(id){
+  getUser(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("user").doc(id).snapshotChanges();
+    return this.firestore.collection('user').doc(id).snapshotChanges();
   }
 
-  getUsers(){
-    return this.firestore.collection("user").snapshotChanges()
+  getUsers() {
+    return this.firestore.collection('user').snapshotChanges();
   }
 
-  getLaporanUser(){
+  getLaporanUser() {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan").snapshotChanges()
+    return this.firestore.collection('laporan').snapshotChanges();
   }
 
-  getLaporan(id){
+  getLaporan(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan", ref=> ref.where("userId","==",id)).snapshotChanges()
+    return this.firestore
+      .collection('laporan', (ref) => ref.where('userId', '==', id))
+      .snapshotChanges();
   }
 
-  getDetailLaporan(id){
+  getDetailLaporan(id) {
     this.loadingService.presentLoading();
-    return this.firestore.collection("laporan").doc(id).valueChanges()
+    return this.firestore.collection('laporan').doc(id).valueChanges();
   }
 
   update_instansi(recordID, record) {
@@ -62,9 +66,9 @@ export class DatabaseService {
     this.firestore.doc(this.collectionName + '/' + recordID).update(record);
   }
 
-  update_laporan(recordID, record){
+  update_laporan(recordID, record) {
     this.loadingService.presentLoading();
-    this.firestore.doc("laporan" + '/' + recordID).update(record);
+    this.firestore.doc('laporan' + '/' + recordID).update(record);
   }
 
   delete_instansi(record_id) {
