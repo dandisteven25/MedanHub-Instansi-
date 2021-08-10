@@ -8,19 +8,15 @@ import '@firebase/auth';
   styleUrls: ['./detail-menunggu.page.scss'],
 })
 export class DetailMenungguPage implements OnInit {
-  user
+  user;
 
-  constructor(
-    private dbService: DatabaseService)
-    { }
+  constructor(private dbService: DatabaseService) {}
 
   ngOnInit() {
-    let idLaporan = this.dbService.laporanId
-    this.dbService.getDetailLaporan(idLaporan).subscribe(data=>{
-      console.log(data)
-      this.user=data
-    })
-
+    let idLaporan = this.dbService.laporanId;
+    this.dbService.getDetailLaporan(idLaporan).subscribe((data) => {
+      console.log(data);
+      this.user = data;
+    });
   }
-
 }
