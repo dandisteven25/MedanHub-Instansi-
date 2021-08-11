@@ -13,11 +13,12 @@ import { AngularFireStorage } from '@angular/fire/storage';
   styleUrls: ['./edit-profil.page.scss'],
 })
 export class EditProfilPage implements OnInit {
-  photo= ""
-  fullname= ""
-  username= ""
+  photo = '';
+  fullname = '';
+  username = '';
+  photoInstansi = '';
 
-  layanan_publik
+  layanan_publik;
 
   constructor(
     private camera: Camera,
@@ -25,20 +26,21 @@ export class EditProfilPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private afStorage: AngularFireStorage
-    ) { }
+  ) {}
 
   ngOnInit() {
-    console.log(this.authService.userData)
-    try{
-      this.authService.checkAuthState().subscribe(data=>{
-        this.dbService.getInstansi(data.uid).subscribe((data)=>{
-          this.layanan_publik = data.payload.data()
-          console.log(this.layanan_publik)
-        })
-      })
-    }catch(e){console.log(e)}
+    console.log(this.authService.userData);
+    try {
+      this.authService.checkAuthState().subscribe((data) => {
+        this.dbService.getInstansi(data.uid).subscribe((data) => {
+          this.layanan_publik = data.payload.data();
+          console.log(this.layanan_publik);
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
-
 
   async getGallery() {
     const options: CameraOptions = {
@@ -48,25 +50,43 @@ export class EditProfilPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
     };
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      const base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.photo=base64Image;
-      console.log('This Is Image From Edit Profil:'+ base64Image);
-     }, (err) => {
-      // Handle error
-      console.log(err);
-     });
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        const base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.photo = base64Image;
+        console.log('This Is Image From Edit Profil:' + base64Image);
+      },
+      (err) => {
+        // Handle error
+        console.log(err);
+      }
+    );
   }
 
-  async update_instansi(){
-    const ref=this.afStorage.ref(`/images/${Date.now()}.jpeg`)
-    await ref.putString(this.photo.substr(23),'base64',{ contentType: 'image/jpeg' })
-    const photoInstansi=await ref.getDownloadURL().toPromise()
+  async update_instansi() {
+    if (this.photo === '') {
+      this.photoInstansi = this.layanan_publik.fotoProfilInstansi;
+      this.dbService.update_instansi(this.authService.userData.uid, {
+        nama_layanan: this.fullname,
+        username: this.username,
+        fotoProfilInstansi: this.photoInstansi,
+      });
+      this.navCtrl.navigateRoot('/home/profil');
+    } else {
+      const ref = this.afStorage.ref(`/images/${Date.now()}.jpeg`);
+      await ref.putString(this.photo.substr(23), 'base64', {
+        contentType: 'image/jpeg',
+      });
+      this.photoInstansi = await ref.getDownloadURL().toPromise();
 
-    this.dbService.update_instansi(this.authService.userData.uid, {"fullname":this.fullname,"username":this.username, "fotoProfilInstansi":photoInstansi})
-    this.navCtrl.navigateRoot("/home/profil")
+      this.dbService.update_instansi(this.authService.userData.uid, {
+        nama_layanan: this.fullname,
+        username: this.username,
+        fotoProfilInstansi: this.photoInstansi,
+      });
+    }
+    this.navCtrl.navigateRoot('/home/profil');
   }
-
 }

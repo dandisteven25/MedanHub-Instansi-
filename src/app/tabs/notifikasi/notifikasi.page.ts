@@ -40,7 +40,7 @@ export class NotifikasiPage implements OnInit {
             this.firestore
               .collection('laporan', (ref) =>
                 ref
-                  .where('nama_layanan', '==', this.akun.fullname)
+                  .where('nama_layanan', '==', this.akun.nama_layanan)
                   .orderBy('tanggal', 'desc')
               )
               .snapshotChanges()

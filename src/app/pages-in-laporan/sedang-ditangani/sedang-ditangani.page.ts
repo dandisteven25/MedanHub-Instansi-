@@ -41,7 +41,7 @@ export class SedangDitanganiPage implements OnInit {
             this.firestore
               .collection('laporan', (ref) =>
                 ref
-                  .where('nama_layanan', '==', this.akun.fullname)
+                  .where('nama_layanan', '==', this.akun.nama_layanan)
                   .where('status', '==', 'Sedang Ditangani')
                   .orderBy('tanggal', 'desc')
               )

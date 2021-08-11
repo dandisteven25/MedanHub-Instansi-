@@ -8,10 +8,10 @@
 <ion-content>
   <ion-card-content>
     <div class="header">
-      <img [src]="user?.foto_user" alt="Gambar User">
+      <img [src]="user?.foto_user" alt="Gambar User" class="foto-user">
       <div class="header-tengah">
         <h5>{{user?.username}}</h5>
-        <p>{{user?.kecamatan}}</p>
+        <p>{{user?.alamat}}, {{user?.kelurahan}}, {{user?.kecamatan}}</p>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
     </div>
 
     <div class="kat-des">
-      <p class="kategori">Kategori : <b>Jalan Rusak</b></p>
+      <p class="kategori">Kategori : <b>{{user?.nama_kategori}}</b></p>
       <p class="deskripsi">{{user?.deskripsi}}</p>
       <p style="font-size: 10px;">{{user?.tanggal | date:'fullDate'}}</p>
     </div>
